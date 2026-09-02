@@ -6,6 +6,9 @@ description: >-
 url: "https://ravipandey0007.github.io"
 baseurl: ""
 author: Ravi Pandey
+github_username: ravipandey0007
+role: "Security Researcher · Malware Reverse Engineer"
+avatar_url: "https://avatars.githubusercontent.com/u/26498707?v=4"
 
 markdown: kramdown
 kramdown:

@@ -1,21 +1,35 @@
 <!-- expects include.posts -->
 {% assign posts = include.posts %}
 {% if posts.size > 0 %}
-<div class="post-list">
-  {% for post in posts %}
-  <article class="post-card">
-    <div class="card-meta">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
-      {% for cat in post.categories %}
-      {% assign catinfo = site.categories_list | where: "slug", cat | first %}
-      <span class="badge">{{ catinfo.name | default: cat }}</span>
-      {% endfor %}
-    </div>
-    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-    <p class="excerpt">{{ post.description | default: post.excerpt | strip_html | truncatewords: 32 }}</p>
-    <a class="read-more" href="{{ post.url | relative_url }}">Read &rarr;</a>
-  </article>
-  {% endfor %}
+<div class="search-block">
+  <div class="search-row">
+    <input type="search" class="post-search" placeholder="Search by title, tool, or keyword…" aria-label="Search posts">
+  </div>
+  <div class="post-list">
+    {% for post in posts %}
+    {% assign tags_str = post.tags | join: " " %}
+    {% assign cats_str = post.categories | join: " " %}
+    {% assign search_blob = post.title | append: " " | append: post.description | append: " " | append: tags_str | append: " " | append: cats_str | strip_html | strip_newlines | downcase | replace: '"', '&quot;' %}
+    <article class="post-card" data-search="{{ search_blob }}">
+      <div class="card-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+        {% for cat in post.categories %}
+        {% assign catinfo = site.categories_list | where: "slug", cat | first %}
+        <span class="badge">{{ catinfo.name | default: cat }}</span>
+        {% endfor %}
+      </div>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p class="excerpt">{{ post.description | default: post.excerpt | strip_html | truncatewords: 32 }}</p>
+      {% if post.tags.size > 0 %}
+      <div class="tag-row">
+        {% for tag in post.tags %}<span class="tag-chip">#{{ tag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+      <a class="read-more" href="{{ post.url | relative_url }}">Read &rarr;</a>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="search-empty" hidden>No posts match &ldquo;<span class="search-empty-q"></span>&rdquo;.</p>
 </div>
 {% else %}
 <div class="empty-state">

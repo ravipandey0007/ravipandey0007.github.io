@@ -1,8 +1,14 @@
 <header class="site-header">
   <div class="wrap">
-    <div class="site-title">
-      <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-      <span class="role">malware reverse engineer</span>
+    <div class="profile-row">
+      <img class="avatar" src="{{ site.avatar_url }}" alt="{{ site.author }}" width="48" height="48" loading="lazy">
+      <div class="profile-id">
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.author }}</a>
+        <div class="profile-sub">
+          <a class="handle" href="https://github.com/{{ site.github_username }}">@{{ site.github_username }}</a>
+          <span class="role">{{ site.role }}</span>
+        </div>
+      </div>
     </div>
     <p class="tagline">{{ site.tagline }}</p>
     <nav class="cat-nav">

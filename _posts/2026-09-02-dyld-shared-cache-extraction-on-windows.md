@@ -2,6 +2,7 @@
 title: "dyld Shared Cache Extraction on Windows"
 description: "A field-tested, no-Mac-required procedure for pulling and parsing a real iOS dyld_shared_cache entirely from a Windows machine — with every gotcha hit along the way."
 categories: [macos-ios]
+tags: [dyld, dyld_shared_cache, apfs, ipsw, ios, mach-o, wsl, apfs-fuse, windows, reverse-engineering]
 ---
 
 Apple ships iOS system libraries pre-linked into one opaque cache file — there are no individual `.dylib`s on disk to point a disassembler at. Getting one out normally means a Mac: mount the IPSW's system image with `hdiutil`, run Apple's own extractor. None of that exists on Windows. This is the pipeline that reconstructs the same result out of open-source pieces, plus every place it broke along the way.
