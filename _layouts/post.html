@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="post">
+  <div class="post-meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+    {% for cat in page.categories %}
+    {% assign catinfo = site.categories_list | where: "slug", cat | first %}
+    <span class="badge">{{ catinfo.name | default: cat }}</span>
+    {% endfor %}
+  </div>
+  <h1 class="post-title">{{ page.title }}</h1>
+  {% if page.description %}<p class="post-dek">{{ page.description }}</p>{% endif %}
+  <div class="post-body">
+    {{ content }}
+  </div>
+  <div class="post-footer">
+    <span>{{ page.date | date: "%-d %b %Y" }}{% if page.updated %} &middot; updated {{ page.updated | date: "%-d %b %Y" }}{% endif %}</span>
+    <a href="{{ '/' | relative_url }}">&larr; All research</a>
+  </div>
+</article>

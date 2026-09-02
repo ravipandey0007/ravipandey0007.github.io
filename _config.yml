@@ -1,0 +1,45 @@
+title: Ravi Pandey
+tagline: Field notes from malware reversing and OS internals research
+description: >-
+  Research notes and write-ups on malware reverse engineering, and internals
+  research across Windows, macOS/iOS, Linux, and Android.
+url: "https://ravipandey0007.github.io"
+baseurl: ""
+author: Ravi Pandey
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    disable: true
+
+permalink: /:categories/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+categories_list:
+  - slug: malware-reversing
+    name: Malware Reversing
+  - slug: windows
+    name: Windows
+  - slug: macos-ios
+    name: macOS / iOS
+  - slug: linux
+    name: Linux
+  - slug: android
+    name: Android
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules

@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; {{ 'now' | date: "%Y" }} {{ site.author }}</span>
+    <span>
+      <a href="https://github.com/{{ site.github_username | default: 'ravipandey0007' }}">GitHub</a>
+      &middot;
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </span>
+  </div>
+</footer>

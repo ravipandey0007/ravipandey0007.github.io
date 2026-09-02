@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="wrap">
+    <div class="site-title">
+      <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <span class="role">malware reverse engineer</span>
+    </div>
+    <p class="tagline">{{ site.tagline }}</p>
+    <nav class="cat-nav">
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>All posts</a>
+      {% for cat in site.categories_list %}
+      <a href="{{ '/categories/' | append: cat.slug | append: '/' | relative_url }}"{% if page.category_slug == cat.slug %} class="active"{% endif %}>{{ cat.name }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

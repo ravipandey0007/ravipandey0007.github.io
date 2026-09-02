@@ -1,0 +1,24 @@
+<!-- expects include.posts -->
+{% assign posts = include.posts %}
+{% if posts.size > 0 %}
+<div class="post-list">
+  {% for post in posts %}
+  <article class="post-card">
+    <div class="card-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+      {% for cat in post.categories %}
+      {% assign catinfo = site.categories_list | where: "slug", cat | first %}
+      <span class="badge">{{ catinfo.name | default: cat }}</span>
+      {% endfor %}
+    </div>
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <p class="excerpt">{{ post.description | default: post.excerpt | strip_html | truncatewords: 32 }}</p>
+    <a class="read-more" href="{{ post.url | relative_url }}">Read &rarr;</a>
+  </article>
+  {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+  <p><b>Nothing here yet.</b><br>New research write-ups land in this category as they're finished.</p>
+</div>
+{% endif %}
