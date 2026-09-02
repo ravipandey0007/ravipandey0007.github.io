@@ -1,8 +1,27 @@
 ---
 layout: default
 ---
-<div class="page-head">
-  <h1>{{ page.title | default: "All research" }}</h1>
-  {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+<div class="home-intro">
+  <h1 class="home-title">{{ page.title | default: "All research" }}</h1>
+  {% if page.description %}<p class="home-dek">{{ page.description }}</p>{% endif %}
+  <p class="home-bio">
+    Notes from reverse-engineering malware and taking OS internals apart by hand —
+    written up as they happen, gaps and dead ends included, not polished after the fact.
+    <a href="https://github.com/{{ site.github_username | default: 'ravipandey0007' }}">@{{ site.github_username | default: 'ravipandey0007' }} on GitHub</a>.
+  </p>
+</div>
+
+<div class="cat-grid">
+  {% for cat in site.categories_list %}
+  {% assign catposts = site.categories[cat.slug] %}
+  <a class="cat-card" href="{{ '/categories/' | append: cat.slug | append: '/' | relative_url }}">
+    <span class="cat-card-name">{{ cat.name }}</span>
+    <span class="cat-card-count{% if catposts.size > 0 %} has-posts{% endif %}">{{ catposts.size }} {% if catposts.size == 1 %}post{% else %}posts{% endif %}</span>
+  </a>
+  {% endfor %}
+</div>
+
+<div class="section-head">
+  <h2>Latest research</h2>
 </div>
 {% include post-list.html posts=site.posts %}

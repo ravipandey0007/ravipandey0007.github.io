@@ -110,6 +110,60 @@ main{ padding:40px 0 90px; }
 .page-head h1{ font-size:32px; font-weight:800; margin:0 0 8px; }
 .page-head p{ color:var(--ink-dim); margin:0; max-width:64ch; }
 
+/* ---------- homepage ---------- */
+.home-intro{ margin-bottom:34px; }
+.home-title{
+  font-size:clamp(26px,3.6vw,36px);
+  font-weight:800;
+  line-height:1.08;
+  margin:0 0 10px;
+}
+.home-dek{
+  font-size:16px;
+  color:var(--ink-dim);
+  max-width:62ch;
+  margin:0 0 12px;
+}
+.home-bio{
+  font-size:14.5px;
+  color:var(--ink-faint);
+  max-width:62ch;
+  margin:0;
+}
+
+.cat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:10px;
+  margin:0 0 46px;
+}
+.cat-card{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  text-decoration:none;
+  background:var(--paper-raised);
+  transition:border-color .15s ease, background .15s ease;
+}
+.cat-card:hover{ border-color:var(--accent); background:var(--accent-soft); }
+.cat-card-name{ color:var(--ink); font-weight:600; font-size:14.5px; }
+.cat-card-count{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  color:var(--ink-faint);
+}
+.cat-card-count.has-posts{ color:var(--accent); }
+
+.section-head{
+  border-top:1px solid var(--line);
+  padding-top:24px;
+  margin-bottom:6px;
+}
+.section-head h2{ font-size:22px; font-weight:700; margin:0; }
+
 /* ---------- post list / cards ---------- */
 .post-list{
   display:flex;
